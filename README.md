@@ -25,3 +25,9 @@ docker-compose up --build
 ```bash
 curl -XGET http://localhost:8080/tasks
 ```
+
+## Build it
+
+```bash
+go build -o cmd/manabu ./...
+```

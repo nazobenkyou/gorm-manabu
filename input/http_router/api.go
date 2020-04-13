@@ -64,13 +64,8 @@ func (h *HttpUtils) notFoundHandler(w http.ResponseWriter, _ *http.Request) {
 	return
 }
 
-func NewRouter() *mux.Router {
+func NewRouter(conn repository.Repository) *mux.Router {
 	r := mux.NewRouter()
-
-	conn, err := repository.Connect()
-	if err != nil {
-		panic(err)
-	}
 
 	c := &Controller{&service.TaskService{Repository: conn}, &HttpUtils{}}
 

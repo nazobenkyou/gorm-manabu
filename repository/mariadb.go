@@ -14,7 +14,7 @@ type (
 )
 
 func Connect() (*MariaDBRepository, error) {
-	if conn, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@/%s?charset=%s", config.Database.User, config.Database.Password, config.Database.DatabaseName, config.Database.Charset)); err != nil {
+	if conn, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s", config.Database.User, config.Database.Password, config.Database.DatabaseHost, config.Database.DatabasePort, config.Database.DatabaseName, config.Database.Charset)); err != nil {
 		return nil, err
 	} else {
 		return &MariaDBRepository{Conn: conn}, nil
