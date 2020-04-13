@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  db:
+    image: mariadb:10.5
+    hostname: localhost
+    container_name: tasks-db
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: tasks
+    volumes:
+      - data-tasks:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  data-tasks:
